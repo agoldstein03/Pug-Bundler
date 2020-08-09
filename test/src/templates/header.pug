@@ -1,0 +1,19 @@
+block primary
+  - const primary = true;
+
+nav.navbar.is-transparent(role='navigation', aria-label='main navigation', class={'is-primary': primary})
+  .navbar-brand
+    a.navbar-item(href='/index.pug')
+      block title
+        img(src='/images/webpoint-cropped.png')
+        // h1.title &nbsp#{title}
+    a.navbar-burger.burger(role='button', aria-label='menu', aria-expanded='false', data-target='navbar')
+      span(aria-hidden='true')
+      span(aria-hidden='true')
+      span(aria-hidden='true')
+  #navbar.navbar-menu
+    .navbar-end
+      each link in links
+        - let [name, url] = link;
+        .navbar-item
+          a.navbar-item.has-text-white(class={'is-active': page === name}, href=url) #{name}

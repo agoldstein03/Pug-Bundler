@@ -1,0 +1,81 @@
+extends templates/page.pug
+
+block append styles
+  link(rel='stylesheet', href='/styles/font-awesome.min.css')
+
+block prepend header
+  - const page = "About Us";
+          
+block content
+  section.hero.is-light
+    .hero-body
+      .container
+        h1.title.is-1.has-text-black About Us
+        figure.about-line
+          img(src='images/CoolColorUnderline.svg')
+
+      .container.about-us-text
+        p.p Webpoint is a volunteer organization that delivers local businesses #[strong.au professional websites] and provides students #[strong.au practical experience] in web development.
+        p.p With #[strong.au over 15 high school volunteers], we are all seeking #[strong.au to make an impact] on our community by harnessing our passions for computer science. 
+        p.p #[strong.au We can’t wait to work with you!]
+
+  section.hero.is-white
+  .hero-body
+    .container
+      h1.title.is-1.has-text-black Why Choose Us?
+      figure.about-line
+        img(src='images/CoolColorUnderline.svg')
+
+    p.p 
+    
+    .container.about-us-text
+      .columns
+        .column
+          figure.wcu-image
+            img(src='images/check-square-solid.png')
+          p.p We create #[strong.au Sleek], #[strong.au Functional], and #[strong.au Mobile Friendly] websites
+        .column
+          figure.wcu-image
+            img(src='images/chalkboard-teacher-solid.png')
+          p.p We give high school students #[strong practical experience] in web development. 
+        .column
+          figure.wcu-image
+            img(src='images/hand-holding-usd-solid.png')
+          p.p You already have enough to pay for, we develop your site #[strong free of charge]. 
+  
+  section.hero.is-dark
+    .hero-body
+      .container
+        h1.title.is-1.has-text-white Our Team
+        figure.about-line
+          img(src='images/CoolColorUnderline.svg')
+
+      p.p 
+      
+      .container.has-text-light.is-size-3
+        p.p Our team is comprised of #[strong.has-text-white over 15 high school students], who are all passionate about supporting the community. 
+        p.p We split our organization into two sections, #[strong.has-text-white designers] and #[strong.has-text-white programmers]. 
+        p.p #[strong.has-text-white Each of these sections work together to deliver you as amazing of a product as possible! ]
+
+
+      .container.has-text-light
+        h2.title.is-2.has-text-white.has-text-centered Meet The Founders
+        .columns
+          .column
+            //empty space
+          .column.is-two-fifths
+            figure.founder-image
+              img(src='images/BenPic.svg', alt='Picture of Ben DiMarco')
+            h3.subtitle.is-3.has-text-white.has-text-centered.mt-3 Ben DiMarco
+            p.has-text-grey-light.has-text-centered Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at quam quis nulla pretium egestas nec facilisis.
+          .column.is-two-fifths
+            figure.founder-image
+              img(src='images/KeshavPic.svg', alt='Picture of Keshav Ganapathy')
+            h3.subtitle.is-3.has-text-white.has-text-centered.mt-3 Keshav Ganapathy
+            p.has-text-grey-light.has-text-centered Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at quam quis nulla pretium egestas nec facilisis.
+          .column
+            //empty space
+
+      //button
+      .button-container
+        a.btn.btn-1 Our Members

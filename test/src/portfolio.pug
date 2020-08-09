@@ -1,0 +1,36 @@
+extends templates/page.pug
+
+block prepend header
+  - const page = "Portfolio";
+
+block content
+  section.hero.is-medium.is-link.is-bold.has-text-centered
+    .hero-body
+      .container
+        h1.title Portfolio
+        h2.subtitle Here's what we've been working on.
+  section.hero.is-success.is-fullheight.is-bold.has-text-centered
+    .hero-body
+      .container
+        h1.title I've Got Your Bach
+        h2.subtitle Affordable, Reliable, Exceptional Accompaniment
+        button.button.is-rounded(onclick='refs.modal.open()') More Information
+        a(target='_blank', href='http://ivegotyourbach.com/')
+          button.button.is-rounded Link
+  section.hero.is-primary.is-fullheight.is-bold.has-text-centered
+    .hero-body
+      .container
+        h1.title This could be you!
+        h2.subtitle Go to our #[a(href="/contact.pug") #[strong contact page]] for more information.
+
+  #modal.modal
+    .modal-background(onclick='refs.modal.close()')
+    .modal-card
+      header.modal-card-head
+        p.modal-card-title I've Got Your Bach
+        button.delete(aria-label='close', onclick='refs.modal.close()')
+      section.modal-card-body Description here!
+      footer.modal-card-foot
+        a(target='_blank', href='http://ivegotyourbach.com/')
+          button.button.is-rounded Link
+

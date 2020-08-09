@@ -1,0 +1,260 @@
+@charset 'utf-8'
+
+
+// TELL BULMA TO USE FONTS LIKE THIS (the rest of the list are Bulma's default fonts):
+$family-sans-serif: 'Montserrat', BlinkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif
+
+$nav-active-border: #73A6FF
+$navbar-background-color: #3E3E3E
+$navbar-item-active-color: #FFFFFF
+$navbar-item-color: #FFFFFF
+//$navbar-item-hover-color: #CCCCCC
+$navbar-item-hover-background-color: #3E3E3E
+
+$navbar-height: 4rem
+$navbar-item-img-max-height: 3rem
+
+$size-1: 5rem
+$size-2: 3.5rem
+
+$accent: #18FF97
+$custom-colors: ('transparent-color': transparent, 'accent': $accent)
+
+$light: #E8E8E8
+$black: #000
+$white: #FFF
+$dark: #3E3E3E
+$very-light: #EFF3FB
+$blue: #73A6FF
+
+$navbar-item-hover-color: $blue // This may not do anything
+
+$grey-dark: $dark
+//$grey-light: $white
+
+$primary: $dark
+$link: $blue
+
+$text-strong: #000
+
+$box-shadow: 0px 0px 10px 5px #1f1f1f
+$box-background-color: #282828
+$input-background-color: #191919
+$input-border-color: #282828
+$input-shadow: inset 0px 0px 7px 4px #121212
+$input-hover-border-color: #282828
+$input-color: #FFF
+$input-focus-border-color: #282828
+$input-focus-box-shadow-size: 0
+$label-weight: 400px
+$input-radius: 4px
+
+@font-face
+  font-family: 'Montserrat'
+  src: url('/fonts/Montserrat-Regular.ttf')
+  font-weight: normal
+  font-style: normal
+
+@font-face
+  font-family: 'Montserrat'
+  src: url('/fonts/Montserrat-Thin.ttf')
+  font-weight: normal
+  font-style: Thin
+
+@font-face
+  font-family: 'Montserrat'
+  src: url('/fonts/Montserrat-SemiBold.ttf')
+  font-weight: SemiBold
+  font-style: normal
+
+@font-face
+  font-family: 'Montserrat '
+  src: url('/fonts/Montserrat-Bold.ttf')
+  font-weight: Bold
+  font-style: normal
+
+@font-face
+  font-family: 'OpenSans'
+  src: url('/fonts/OpenSans-Regular.ttf')
+  font-weight: normal
+  font-style: normal
+
+$family-sans-serif: 'Montserrat'
+
+// USE BULMA~THIS:
+// @import '~bulma/sass/utilities/_all.sass'
+
+// @import '~bulma/sass/base/_all.sass'
+
+// @import '~bulma/sass/elements/box.sass'
+// @import '~bulma/sass/elements/button.sass'
+// @import '~bulma/sass/elements/container.sass'
+// @import '~bulma/sass/elements/content.sass'
+// @import '~bulma/sass/elements/icon.sass'
+// @import '~bulma/sass/elements/image.sass'
+// @import '~bulma/sass/elements/other.sass'
+// @import '~bulma/sass/elements/progress.sass'
+// @import '~bulma/sass/elements/table.sass'
+// @import '~bulma/sass/elements/title.sass'
+
+// @import '~bulma/sass/form/_all.sass'
+
+// @import '~bulma/sass/grid/_all.sass'
+
+// @import '~bulma/sass/components/navbar.sass'
+// @import '~bulma/sass/components/dropdown.sass'
+// @import '~bulma/sass/components/media.sass'
+
+// @import '~bulma/sass/layout/_all.sass'
+
+
+// USE BULMA AS A WHOLE LIKE THIS (before production, switch to modular to reduce size)
+@import 'bulma/bulma.sass'
+
+.about-line
+  max-width: 240px
+
+.about-us-text
+  font-size: 28px
+  color: #4A4A4A
+  text-align: center
+  padding-top: 24px
+
+p.p 
+  padding-top: 24px
+  padding-bottom: 24px
+
+.wcu-image
+  max-width: 35%
+  display: block
+  margin-left: auto
+  margin-right: auto
+
+.founder-image
+  max-width: 65%
+  display: block
+  margin-left: auto
+  margin-right: auto
+
+// This should be replaced with a proper figure around the logo
+img.logo
+  width: 12rem
+  height: 3rem
+
+a.navbar-item:not(.is-active)::after
+  position: absolute
+  left: 0
+  content: ''
+  height: 40px
+  width: 100%
+  border-bottom: solid 3px #73A6FF
+
+  -webkit-transform: scaleX(0.0001)
+  -ms-transform: scaleX(0.0001)
+  transform: scaleX(0.0001)
+
+  -webkit-transition: -webkit-transform 250ms ease-in-out
+  transition: transform 250ms ease-in-out
+
+
+a.navbar-item:hover:not(.is-active)::after
+  -webkit-transform: scaleX(0.7)
+  -ms-transform: scaleX(0.7)
+  transform: scaleX(0.7)
+
+//contact form
+/* for the contact page */
+.hero.has-background 
+  position: relative
+  overflow: hidden
+
+.hero-background
+  position: absolute
+  object-fit: cover
+  object-position: center center
+  width: 100%
+  height: 100%
+
+//button
+/* Copyright (c) 2020 by MrPirrera (https://codepen.io/pirrera/pen/bqVeGx)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. */
+
+.button-container
+  text-align: center
+  padding-top: 100px
+
+.btn 
+  padding: 20px
+  text-align: center
+  transition: 0.5s
+  background-size: 200% auto
+  color: $white
+  box-shadow: 0 0 12px #777
+  border-radius: 10px
+  font-weight: 600
+
+.btn:hover
+  color: $white
+  background-position: right center /* change the direction of the change here */
+
+.btn-1
+  background-image: linear-gradient(to right, #2039FC 0%, #3295FF 50%, #2039FC 100%)
+
+.gradbord:focus 
+  border-bottom: 4px solid
+  border-image-source: linear-gradient(45deg, #18FF97, #2033FF)
+  border-image-slice: 0 0 10% 0
+  border-radius: 5px
+
+.no-out:focus 
+  outline: none
+
+.is-small.input.rad4, .is-small.textarea.rad4 
+  border-radius: 4px
+
+.button.is-link.is-center.c-form 
+  background-color: #1D6DE1
+  border-radius: 10px
+
+.c-form a:hover
+  text-decoration: underline
+
+/* End button copyright */
+
+
+//navbar is open
+@media only screen and (min-width: $navbar-breakpoint)
+  .navbar-item.is-active
+    border-bottom: solid .25rem $nav-active-border
+
+//tablet
+@media only screen and (min-width: $tablet)
+  .reverse-order
+    display: flex
+    flex-direction: column-reverse
+
+  .about-line
+    max-width: 31%
+
+  .mobile-o
+    display: none
+
+@media only screen and (max-width: $tablet)
+  .desktop-o
+    display: none
+
+  .hero.is-fullheight-with-navbar.has-background
+    display: block
+    background-color: #3E3E3E
+
+  .mobile-o
+    display: block
+
+//desktop
+@media only screen and (min-width: $desktop)
+  .about-line
+    max-width: 21%
+

@@ -1,0 +1,126 @@
+$nav-active-border: #73A6FF
+$navbar-item-color: #FFFFFF
+$navbar-item-hover-color: #FFFFFF
+$navbar-item-active-color: #FFFFFF
+$navbar-item-img-max-height: 4rem
+$navbar-burger-color: #FFFFFF
+$navbar-height: 6.5rem
+
+$button-background-color: #497DFF
+$button-border-color: $button-background-color 
+$button-text-color: #FFFFFF
+$button-text-hover-color: #FFFFFF
+$button-hover-color: #FFFFFF
+$button-hover-border-color: #3060FF
+$button-active-color: #FFFFFF
+$button-active-border-color: #FFFFFF
+$button-focus-color: #FFFFFF
+
+@font-face
+  font-family: 'Montserrat'
+  src: url('/fonts/Montserrat-Regular.ttf')
+  font-weight: normal
+  font-style: normal
+
+@font-face
+  font-family: 'Montserrat Thin'
+  src: url('/fonts/Montserrat-Thin.ttf')
+  font-weight: normal
+  font-style: Thin
+
+@font-face
+  font-family: 'Montserrat SemiBold'
+  src: url('/fonts/Montserrat-SemiBold.ttf')
+  font-weight: SemiBold
+  font-style: normal
+
+@font-face
+  font-family: 'Montserrat Bold'
+  src: url('/fonts/Montserrat-Bold.ttf')
+  font-weight: Bold
+  font-style: normal
+
+@font-face
+  font-family: 'OpenSans'
+  src: url('/fonts/OpenSans-Regular.ttf')
+  font-weight: normal
+  font-style: normal
+
+$family-sans-serif: 'Montserrat'
+
+@import "C:/Users/Adam/Documents/GitHub/Pug-Firebase-Templating/node_modules/bulma/bulma.sass"
+
+.navbar-item
+  color: $white
+  font-size: 24px
+  padding-left: 24px
+  padding-right: 24px
+
+.hero.is-link a.navbar-item:hover, .hero.is-link a.navbar-item.is-active, .hero.is-link .navbar-link:hover, .hero.is-link .navbar-link.is-active 
+  background-color: transparent
+  color: #fff
+
+.is-active
+  color: $white
+
+.index-title
+  color: $white
+
+.hero
+  background-image: linear-gradient(to top right, #7CE3FD, #431EFF)
+
+.home-title
+  font-size: 32px
+  color: $white
+
+
+span
+  color: $white
+
+.big-text
+  color: $white
+  font-family: Montserrat
+  font-size: 40px
+  padding-bottom: 12px
+
+.smol-text
+  color: $white
+  opacity: 0.62
+  font-size: 26px
+  padding-top: 12px
+  padding-bottom: 48px
+
+.button
+  color: $white
+  font-family: Montserrat
+
+//navbar is open
+@media only screen and (min-width: $navbar-breakpoint)
+  .navbar-item.is-active
+    border-bottom: solid .25rem $nav-active-border
+
+  .container1
+    padding-top: 120px
+
+//tablet
+@media only screen and (min-width: $tablet) 
+  .about-line
+    max-width: 31%
+  
+  .about-subtitle
+    font-size: 80px
+
+@media only screen and (max-width: $tablet)
+  .reverse-order
+    display: flex
+    flex-direction: column-reverse
+  
+  .button-container
+    text-align: center
+
+//desktop
+@media only screen and (min-width: $desktop)
+    .about-line
+      max-width: 21%
+    .big-text
+      font-size: 48px

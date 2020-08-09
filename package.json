@@ -1,0 +1,19 @@
+{
+  "name": "pug-bundler",
+  "version": "1.0.0",
+  "description": "An extensible bundler that integrates with the internals of the Pug compiler.",
+  "repository": "https://github.com/agoldstein03/Pug-Bundler.git",
+  "author": "Adam Goldstein <agoldstein03@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bufferutil": "^4.0.1",
+    "css-tree": "^1.0.0-alpha.39",
+    "node-sass": "^4.14.1",
+    "pug": "^3.0.0",
+    "recursive-readdir-sync": "^1.0.6",
+    "sass": "^1.26.10"
+  },
+  "devDependencies": {
+    "bulma": "^0.9.0"
+  }
+}

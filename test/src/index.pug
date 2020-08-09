@@ -1,0 +1,26 @@
+extends templates/page.pug
+
+block styles
+  link(rel='stylesheet', href='/styles/index.sass')
+
+block header
+
+block content
+  section.hero.is-link.is-fullheight
+        .hero-head
+          - const page = "Home";
+          include templates/indexHeader.pug
+        .hero-body
+          .container
+            .columns.reverse-order
+              .column
+                .container1
+                  p.big-text Lorem ipsum dolor sit amet, consectetur
+                  p.smol-text Lorem ipsum dolor sit amet, consectetur
+                  .button-container
+                    a.button.is-large(href='/about-us.pug') More About Us
+              .column 
+                figure
+                  img(src='images/LaptopDesign-WebpointHomepage.svg')
+
+block footer
