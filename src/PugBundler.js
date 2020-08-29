@@ -89,7 +89,13 @@ function PugBundler(options = {}) {
   };*/
   let {basePath} = options;
 
-  this.handleWrite = options.handleWrite || function handleWrite(file) {
+  this.handleWrite = function handleWrite(file) {
+    if (options.handleWrite) {
+      const result = options.handleWrite(file);
+      if (result !== undefined) {
+        return result
+      }
+    }
     const finalPath = path.resolve(basePath, outPath, path.relative(basePath, file.path));
     fs.mkdirSync(path.dirname(finalPath), {recursive: true});
     fs.writeFileSync(finalPath, file.contents);
@@ -114,7 +120,7 @@ function PugBundler(options = {}) {
     if (!exclude.has(normalizedFilePath)) {
       exclude.add(normalizedFilePath)
       for (const file of asset.transform({filePath, basePath, relativePath: relativeFilePath, currentBasePath, dirname, basename, bundler: this, options: options[asset.name] || {}})) {
-        const resultingPath = this.handleWrite(file);
+        const resultingPath = this.handleWrite({type: asset.name, ...file});
         console.log(`${filePath} => ${resultingPath}`)
       }
     }

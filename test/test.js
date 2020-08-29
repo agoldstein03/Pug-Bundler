@@ -1,20 +1,28 @@
-const PugBundler = require("../src/PugBundler");
+const fs = require("fs"),
+  PugBundler = require("../src/PugBundler");
+
+const files = [];
 
 const bundler = new PugBundler({
   files: [
     "src"
-    "src/index.pug",
+    /*"src/index.pug",
     "src/about-us.pug",
     "src/portfolio.pug",
-    "src/contact.pug"
+    "src/contact.pug"*/
   ],
   exclude: [
     "src/.pugrc",
     "src/templates"
   ],
   assets: [
-    require("./PugCompileAsset")
+    require("../src/PugCompileAsset")
   ],
+  handleWrite: file => {
+    if (file.type === "pug") {
+      files.push({path: file.path, contents: file.contents.toString()});
+    }
+  },
   sass: {
     includePaths: ["../node_modules"]
   },
@@ -29,3 +37,5 @@ const bundler = new PugBundler({
     ]
   }
 })
+
+fs.writeFileSync("dist/out.json", JSON.stringify(files));
