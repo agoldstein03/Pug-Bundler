@@ -15,5 +15,6 @@
   },
   "devDependencies": {
     "bulma": "^0.9.0"
-  }
+  },
+  "main": "src/PugBundler.js"
 }
