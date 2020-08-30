@@ -108,6 +108,9 @@ function PugBundler(options = {}) {
     }
     let filePath;
     if (relativeFilePath[0] === "/") {
+      if (relativeFilePath === "/") {
+        return relativeFilePath;
+      }
       filePath = path.resolve(basePath, relativeFilePath.slice(1));
     } else {
       filePath = path.resolve(currentBasePath, relativeFilePath)
@@ -128,6 +131,7 @@ function PugBundler(options = {}) {
   }
 
   this.postLex = function postLex(value, pugOptions) {
+    //Object.assign(this, pugOptions);
     if (value[0]) {
       const currentBasePath = path.dirname(value[0].loc.filename);
       if (!basePath) {
