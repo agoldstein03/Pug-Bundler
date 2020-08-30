@@ -10,7 +10,8 @@
 
 const path = require('path'),
   fs = require("fs"),
-  recursiveReadSync = require('recursive-readdir-sync');
+  recursiveReadSync = require('recursive-readdir-sync'),
+  nodeEval = require("node-eval");
 
 const ATTRS = {
     src: [
@@ -170,7 +171,7 @@ function PugBundler(options = {}) {
 
   function tryEval(code) {
     try {
-      return eval(code);
+      return nodeEval(code, null, options.pug.locals); // TODO: NEEDS TESTING
     } catch (e) {
       //console.warn(e);
     }
