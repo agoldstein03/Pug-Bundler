@@ -1,6 +1,6 @@
 {
   "name": "pug-bundler",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An extensible bundler that integrates with the internals of the Pug compiler.",
   "repository": "https://github.com/agoldstein03/Pug-Bundler.git",
   "author": "Adam Goldstein <agoldstein03@gmail.com>",
