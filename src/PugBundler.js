@@ -110,7 +110,9 @@ function PugBundler(options = {}) {
       basePath = currentBasePath;
     }
     let filePath;
-    if (relativeFilePath[0] === "/") {
+    if (relativeFilePath === "") {
+      return relativeFilePath;
+    } else if (relativeFilePath[0] === "/") {
       if (relativeFilePath === "/") {
         return relativeFilePath;
       }
@@ -154,7 +156,7 @@ function PugBundler(options = {}) {
                         //console.log(value[0].loc.filename);
                         let val = tryEval(token.val);
                         if (val && !val.includes("://") && !URL_EXCLUDE.test(val)) {
-                          token.val = "'"+this.registerAndRename(processURL(val), currentBasePath)+"'";
+                          token.val = "'"+this.registerAndRename(trimURL(val), currentBasePath)+endURL(val)+"'";
                         }
                     } else if (tag === "meta" && META[token.name] && tryEval(token.val) && META[token.name].includes(tryEval(token.val))) {
                       meta = true;
@@ -162,7 +164,7 @@ function PugBundler(options = {}) {
                       //console.log(value[0].loc.filename);
                       let val = tryEval(token.val);
                       if (val && !val.includes("://") && !URL_EXCLUDE.test(val)) {
-                        token.val = "'"+this.registerAndRename(processURL(val), currentBasePath)+"'";
+                        token.val = "'"+this.registerAndRename(trimURL(val), currentBasePath)+endURL(val)+"'";
                       }
                     }
                     break;
@@ -173,8 +175,12 @@ function PugBundler(options = {}) {
     }
   }
 
-  function processURL(url) {
+  function trimURL(url) {
     return url.replace(/((#|\?).*)$/, "");
+  }
+
+  function endURL(url) {
+    return /((#|\?).*)$/.exec(url) || "";
   }
 
   function tryEval(code) {
