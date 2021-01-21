@@ -35,7 +35,8 @@ const bundler = new PugBundler({
       ["Portfolio", "/portfolio.pug"],
       ["Contact Us", "/contact.pug"]
     ]
-  }
+  },
+  expand: false
 })
 
 fs.writeFileSync("dist/out.json", JSON.stringify(files));

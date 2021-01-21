@@ -90,7 +90,7 @@ function PugBundler(options = {}) {
     files: [],
     ...options
   };*/
-  let {basePath} = options;
+  let {basePath, expand = true} = options;
 
   this.handleWrite = function handleWrite(file) {
     if (options.handleWrite) {
@@ -133,42 +133,44 @@ function PugBundler(options = {}) {
     return rename;
   }
 
-  this.postLex = function postLex(value, pugOptions) {
-    //Object.assign(this, pugOptions);
-    if (value[0]) {
-      const currentBasePath = path.dirname(value[0].loc.filename);
-      if (!basePath) {
-        basePath = currentBasePath;
-      }
-      let tag,
-          meta = false;
-      for (const token of value) {
-          switch (token.type) {
-              case "tag":
-                  tag = token.val;
-                  break;
-              case "attribute":
-                  if (meta && token.name === "content") {
-                      meta = false;
+  if (expand) {
+    this.postLex = function postLex(value, pugOptions) {
+      //Object.assign(this, pugOptions);
+      if (value[0]) {
+        const currentBasePath = path.dirname(value[0].loc.filename);
+        if (!basePath) {
+          basePath = currentBasePath;
+        }
+        let tag,
+            meta = false;
+        for (const token of value) {
+            switch (token.type) {
+                case "tag":
+                    tag = token.val;
+                    break;
+                case "attribute":
+                    if (meta && token.name === "content") {
+                        meta = false;
+                        //console.log(value[0].loc.filename);
+                        let val = tryEval(token.val);
+                        if (val && !val.includes("://") && !URL_EXCLUDE.test(val)) {
+                          token.val = "'"+this.registerAndRename(processURL(val), currentBasePath)+"'";
+                        }
+                    } else if (tag === "meta" && META[token.name] && tryEval(token.val) && META[token.name].includes(tryEval(token.val))) {
+                      meta = true;
+                    } else if (ATTRS[token.name] && ATTRS[token.name].includes(tag)) {
                       //console.log(value[0].loc.filename);
                       let val = tryEval(token.val);
                       if (val && !val.includes("://") && !URL_EXCLUDE.test(val)) {
                         token.val = "'"+this.registerAndRename(processURL(val), currentBasePath)+"'";
                       }
-                  } else if (tag === "meta" && META[token.name] && tryEval(token.val) && META[token.name].includes(tryEval(token.val))) {
-                    meta = true;
-                  } else if (ATTRS[token.name] && ATTRS[token.name].includes(tag)) {
-                    //console.log(value[0].loc.filename);
-                    let val = tryEval(token.val);
-                    if (val && !val.includes("://") && !URL_EXCLUDE.test(val)) {
-                      token.val = "'"+this.registerAndRename(processURL(val), currentBasePath)+"'";
                     }
-                  }
-                  break;
-          }
+                    break;
+            }
+        }
       }
+      return value;
     }
-    return value;
   }
 
   function processURL(url) {
