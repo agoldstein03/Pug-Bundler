@@ -60,6 +60,8 @@ const ATTRS = {
     ]
   };
 
+const URL_EXCLUDE = /^mailto:/;
+
 function PugBundler(options = {}) {
   const assets = [
     ...(options.assets || []),
@@ -149,17 +151,17 @@ function PugBundler(options = {}) {
                   if (meta && token.name === "content") {
                       meta = false;
                       //console.log(value[0].loc.filename);
-                      const val = tryEval(token.val);
-                      if (val && !val.includes("://")) {
-                        token.val = "'"+this.registerAndRename(val, currentBasePath)+"'";
+                      let val = tryEval(token.val);
+                      if (val && !val.includes("://") && !URL_EXCLUDE.test(val)) {
+                        token.val = "'"+this.registerAndRename(processURL(val), currentBasePath)+"'";
                       }
                   } else if (tag === "meta" && META[token.name] && tryEval(token.val) && META[token.name].includes(tryEval(token.val))) {
                     meta = true;
                   } else if (ATTRS[token.name] && ATTRS[token.name].includes(tag)) {
                     //console.log(value[0].loc.filename);
-                    const val = tryEval(token.val);
-                    if (val && !val.includes("://")) {
-                      token.val = "'"+this.registerAndRename(val, currentBasePath)+"'";
+                    let val = tryEval(token.val);
+                    if (val && !val.includes("://") && !URL_EXCLUDE.test(val)) {
+                      token.val = "'"+this.registerAndRename(processURL(val), currentBasePath)+"'";
                     }
                   }
                   break;
@@ -167,6 +169,10 @@ function PugBundler(options = {}) {
       }
     }
     return value;
+  }
+
+  function processURL(url) {
+    return url.replace(/((#|\?).*)$/, "");
   }
 
   function tryEval(code) {
